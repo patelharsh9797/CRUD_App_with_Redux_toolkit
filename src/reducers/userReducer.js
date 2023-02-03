@@ -10,7 +10,8 @@ const userSlice = createSlice({
   reducers: {
     addUser: (state, action) => {
       // code for add user
-      state.value.push(action.payload);
+      // state.unshift(action.payload);
+      return [ ...state,action.payload];
     },
 
     updateUser: (state, action) => {

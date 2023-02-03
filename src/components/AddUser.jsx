@@ -25,7 +25,8 @@ const AddUser = () => {
           // dispatch(addUser({ id: users.length + 1, name, username }))
           dispatch(
             addUser({
-              id: users.length ? users[users.length - 1].id + 1 : 1,
+              // id: users.length ? users[users.length - 1].id + 1 : 1,
+              id: users.length + 1,
               name,
               username,
             })
