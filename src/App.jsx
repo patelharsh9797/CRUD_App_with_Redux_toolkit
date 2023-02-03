@@ -9,9 +9,9 @@ import Jokes from "./components/Jokes";
 function App() {
   return (
     <div className="App">
-      <AddUser />
-      <DisplayUser />
-      {/* <Jokes /> */}
+      {/* <AddUser /> */}
+      {/* <DisplayUser /> */}
+      <Jokes />
     </div>
   );
 }

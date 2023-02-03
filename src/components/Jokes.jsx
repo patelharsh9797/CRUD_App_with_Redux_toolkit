@@ -9,6 +9,7 @@ const Jokes = () => {
     isLoading,
     data: jokeData,
     error,
+    isError,
   } = useSelector((state) => state.jokes);
 
   useEffect(() => {
@@ -21,7 +22,13 @@ const Jokes = () => {
       <button disabled={isLoading} onClick={() => dispatch(getJoke())}>
         {!isLoading ? "New Joke" : "joking..."}
       </button>
-      {jokeData ? <h2>Joke Found : {jokeData.value}</h2> : <h2>loading...</h2>}
+      {isError ? (
+        <h2>Error while fetching...</h2>
+      ) : jokeData && !isLoading ? (
+        <h2>Joke Found : {jokeData.value}</h2>
+      ) : (
+        <h2>loading...</h2>
+      )}
     </div>
   );
 };
