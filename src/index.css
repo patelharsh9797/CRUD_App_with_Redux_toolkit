@@ -33,7 +33,7 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.5em;
   line-height: 1.1;
 }
 
@@ -101,7 +101,8 @@ input:is(:hover, :focus-within) {
   gap: 1rem;
 }
 
-.user {
+.user,
+.jokeBox {
   padding: 1rem;
   border-radius: 16px;
   /* box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); */
@@ -123,8 +124,8 @@ input:is(:hover, :focus-within) {
   gap: .5rem;
 }
 
-.user .userUpdate button {
-
+.user .userUpdate button,
+.jokeBox button {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
@@ -133,8 +134,15 @@ input:is(:hover, :focus-within) {
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.user .userUpdate button:hover {
+.user .userUpdate button:hover,
+.jokeBox button:hover {
   border-color: #535bf2;
+}
+
+
+.jokeBox {
+  margin-bottom: 1rem;
+
 }
 
 @media (prefers-color-scheme: light) {

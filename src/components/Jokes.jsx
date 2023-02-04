@@ -17,7 +17,7 @@ const Jokes = () => {
   }, []);
 
   return (
-    <div>
+    <div className="jokeBox">
       <h1>Jokes with Redux Toolkit</h1>
       <button disabled={isLoading} onClick={() => dispatch(getJoke())}>
         {!isLoading ? "New Joke" : "joking..."}
