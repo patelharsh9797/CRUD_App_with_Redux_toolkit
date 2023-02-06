@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../reducers/userReducer";
+import { nanoid } from "nanoid";
 
 const AddUser = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,8 @@ const AddUser = () => {
           dispatch(
             addUser({
               // id: users.length ? users[users.length - 1].id + 1 : 1,
-              id: users.length + 1,
+              // id: users.length + 1,
+              // id: nanoid(), passing it in slice at prepare state
               name,
               username,
             })

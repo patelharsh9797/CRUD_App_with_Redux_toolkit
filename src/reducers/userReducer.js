@@ -1,39 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 import userData from "../FakeData";
 
+import { nanoid } from "nanoid";
+
 const initialState = [...userData];
 // const initialState = { value: userData };
 
-const userSlice = createSlice({
+const userReducer = createSlice({
   name: "USER",
   initialState,
   reducers: {
-    addUser: (state, action) => {
-      // code for add user
-      // state.unshift(action.payload);
-      return [ ...state,action.payload];
+    addUser: {
+      reducer: (state, action) => [action.payload, ...state],
+      prepare: (value) => ({
+        payload: { ...value, id: nanoid(), date: new Date() },
+      }),
     },
 
-    updateUser: (state, action) => {
-      // code for update user
-      // state.value = state.value.map((user) =>
-      //   user.id === action.payload.id
-      //     ? {
-      //         ...user,
-      //         name: action.payload.name,
-      //         username: action.payload.username,
-      //       }
-      //     : { ...user }
-      // );
-
-      // state.map((user) => {
-      //   if (user.id === action.payload.id) {
-      //     user.name = action.payload.name;
-      //     user.username = action.payload.username;
-      //   }
-      // });
-
-      return state.map((user) =>
+    updateUser: (state, action) =>
+      state.map((user) =>
         user.id === action.payload.id
           ? {
               ...user,
@@ -41,17 +26,13 @@ const userSlice = createSlice({
               username: action.payload.username,
             }
           : { ...user }
-      );
-    },
+      ),
 
-    deleteUser: (state, action) => {
-      // code for delete user
-      // state.value = state.value.filter((u) => u.id !== action.payload.id);
-      return state.filter((user) => user.id !== action.payload.id);
-    },
+    deleteUser: (state, action) =>
+      state.filter((user) => user.id !== action.payload.id),
   },
 });
 
-export const { addUser, updateUser, deleteUser } = userSlice.actions;
+export const { addUser, updateUser, deleteUser } = userReducer.actions;
 
-export default userSlice;
+export default userReducer.reducer;

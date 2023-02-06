@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser, deleteUser } from "../reducers/userReducer";
 
+import { nanoid } from "nanoid";
+
 const DisplayUser = () => {
   const users = useSelector((state) => state.users);
   return (
     <div className="displayUser">
       {users.map((user) => (
-        <User key={user.id} user={user} />
+        <User key={nanoid()} user={user} />
       ))}
     </div>
   );
